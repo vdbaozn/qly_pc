@@ -16,10 +16,16 @@ function check_my_pc_update($transient) {
     }
 
     // Link raw tới file info.json trên GitHub
-    $json_url = 'https://raw.githubusercontent.com/vdbaozn/qly_pc/main/info.json';
-    
+
+    $json_url = 'https://raw.githubusercontent.com/vdbaozn/qly_pc/main/info.json?v=' . time();
+
     // Gọi lấy dữ liệu từ GitHub
-    $response = wp_remote_get($json_url, array('timeout' => 10));
+    $response = wp_remote_get($json_url, array(
+        'timeout'   => 10,
+        'headers'   => array(
+            'Cache-Control' => 'no-cache', // Yêu cầu không lấy cache
+        ),
+    ));    
     
     if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
         return $transient;
