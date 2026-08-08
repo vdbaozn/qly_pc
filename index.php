@@ -3,7 +3,7 @@
  * Plugin Name: Quản lý PC
  * Plugin URI:  https://github.com/vdbaozn/qly_pc
  * Description: Plugin có tính năng tự động cập nhật từ GitHub.
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      Võ Duy Bảo
  */
 
@@ -58,7 +58,16 @@ function my_pc_popup_info($res, $action, $args) {
 
     $plugin_file = plugin_basename(__FILE__);
     if (isset($args->slug) && $args->slug === $plugin_file) {
-        $response = wp_remote_get('https://raw.githubusercontent.com/vdbaozn/qly_pc/main/info.json');
+        $json_url = 'https://raw.githubusercontent.com/vdbaozn/qly_pc/main/info.json?v=' . time();
+
+        $response = wp_remote_get($json_url, array(
+            'timeout'   => 10,
+            'headers'   => array(
+                'Cache-Control' => 'no-cache', // Yêu cầu không lấy cache
+            ),
+        ));
+
+
         if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
             $remote_info = json_decode(wp_remote_retrieve_body($response));
             $res = new stdClass();
