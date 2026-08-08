@@ -9,8 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-add_filter('pre_set_site_transient_update_plugins', 'check_my_plugin_update');
-function check_my_plugin_update($transient) {
+add_filter('pre_set_site_transient_update_plugins', 'check_my_pc_update');
+function check_my_pc_update($transient) {
     if (empty($transient->checked)) {
         return $transient;
     }
@@ -50,8 +50,8 @@ function check_my_plugin_update($transient) {
 }
 
 // Bổ sung: Hiển thị thông tin popup chi tiết bản cập nhật (khi bấm View version 5.1.2 details)
-add_filter('plugins_api', 'my_plugin_popup_info', 20, 3);
-function my_plugin_popup_info($res, $action, $args) {
+add_filter('plugins_api', 'my_pc_popup_info', 20, 3);
+function my_pc_popup_info($res, $action, $args) {
     if ($action !== 'plugin_information') {
         return $res;
     }
