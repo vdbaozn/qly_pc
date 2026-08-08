@@ -1,0 +1,10 @@
+{
+    "name": "Quản lý PC",
+    "slug": "qly_pc",
+    "version": "1.0.0",
+    "download_url": "https://github.com/vdbaozn/plugin/raw/main/qly_pc.zip",
+    "sections": {
+        "description": "Đây là phiên bản mới với nhiều tính năng nâng cao và sửa lỗi bảo mật.",
+        "changelog": "<ul><li>Sửa lỗi giao diện</li><li>Nâng cấp hiệu năng</li></ul>"
+    }
+}
