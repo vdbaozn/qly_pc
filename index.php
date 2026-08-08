@@ -3,7 +3,7 @@
  * Plugin Name: Quản lý PC
  * Plugin URI:  https://github.com/vdbaozn/qly_pc
  * Description: Plugin có tính năng tự động cập nhật từ GitHub.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Võ Duy Bảo
  */
 
